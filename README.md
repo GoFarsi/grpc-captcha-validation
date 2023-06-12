@@ -1,4 +1,4 @@
-# GRPC captcha validator
+# GRPC captcha validator [![Go Reference](https://pkg.go.dev/badge/github.com/GoFarsi/grpc-captcha-validation.svg)](https://pkg.go.dev/github.com/GoFarsi/grpc-captcha-validation)
 The GRPC Captcha Validation Middleware is a Go module that provides a reusable middleware component for validating captcha challenges on GRPC servers. The middleware intercepts incoming requests, verifies the captcha challenge for the request using a configurable provider, and rejects the request if the challenge is not valid.
 
 The module is designed to be configurable, with options to specify the captcha provider, challenge validation endpoint, and custom headers for the validation request. It uses the Google Protobuf library to parse the GRPC method descriptor and extract custom options defined using protobuf extensions.
@@ -7,6 +7,12 @@ The module is designed to be configurable, with options to specify the captcha p
 - support Google, Cloudflare, hcaptcha provider to verify challenge
 - support unary and stream server middleware
 - captcha validation for specific rpc methods
+
+# install (Go <= 1.18)
+
+```shell
+$ go get -u github.com/GoFarsi/grpc-captcha-validation
+```
 
 # Example
 
