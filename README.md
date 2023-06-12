@@ -8,7 +8,7 @@ The module is designed to be configurable, with options to specify the captcha p
 - support unary and stream server middleware
 - captcha validation for specific rpc methods
 
-# install (Go <= 1.18)
+# Install (Go <= 1.18)
 
 ```shell
 $ go get -u github.com/GoFarsi/grpc-captcha-validation
