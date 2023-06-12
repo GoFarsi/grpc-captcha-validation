@@ -62,10 +62,6 @@ func (c *Captcha) UnaryServerInterceptor() grpc.UnaryServerInterceptor {
 			return nil, err
 		}
 
-		if !cp.CheckChallenge {
-			return handler(ctx, req)
-		}
-
 		if cp.CheckChallenge {
 			switch cp.Provider {
 			case captcha.Provider_GOOGLE:
@@ -102,10 +98,6 @@ func (c *Captcha) StreamServerInterceptor() grpc.StreamServerInterceptor {
 		cp, err := c.extractCaptchaOptionFromDescriptor(strings.Replace(info.FullMethod[1:], "/", ".", -1))
 		if err != nil {
 			return err
-		}
-
-		if !cp.CheckChallenge {
-			return handler(srv, stream)
 		}
 
 		if cp.CheckChallenge {
