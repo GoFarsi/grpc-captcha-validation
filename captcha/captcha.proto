@@ -1,0 +1,23 @@
+syntax = "proto3";
+package captcha;
+
+option go_package = "github.com/GoFarsi/grpc-captcha-validation/captcha";
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.MethodOptions {
+  Captcha captcha = 7564324;
+}
+
+message Captcha {
+  // provider select specific provider to verify challenge captcha
+  Provider provider = 1;
+  // check_challenge check captcha challenge in rpc method
+  bool check_challenge = 2;
+}
+
+enum Provider {
+  GOOGLE = 0;
+  CLOUDFLARE = 1;
+  HCAPTCHA = 2;
+}
