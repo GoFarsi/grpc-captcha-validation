@@ -1,0 +1,29 @@
+syntax = "proto3";
+package example;
+option go_package = "github.com/GoFarsi/grpc-captcha-validation/_example/proto";
+
+import "captcha.proto";
+
+service GreetingService {
+  rpc Greeting(GreetingRequest) returns(GreetingResponse) {
+    option(captcha.captcha) = {
+      check_challenge: true,
+      provider: GOOGLE,
+    };
+  }
+
+  rpc GreetingStream(stream GreetingRequest) returns(stream GreetingResponse) {
+    option(captcha.captcha) = {
+      check_challenge: true,
+      provider: GOOGLE,
+    };
+  }
+}
+
+message GreetingRequest {
+  string name = 1;
+}
+
+message GreetingResponse {
+  string message = 1;
+}
